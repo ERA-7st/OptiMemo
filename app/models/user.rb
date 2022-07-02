@@ -5,6 +5,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+  validates :name, presence: true, length: { maximum: 10 } 
+
   private
   def set_uuid
     while self.id.blank? || User.find_by(id: self.id).present? do
