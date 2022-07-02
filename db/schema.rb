@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_061428) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "user_name"
+    t.string "name", default: "", null: false
     t.boolean "send_mail", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
