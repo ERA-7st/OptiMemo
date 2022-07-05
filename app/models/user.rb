@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 10 } 
 
+  has_one :periodic_mail, dependent: :destroy
+
   private
   def set_uuid
     while self.id.blank? || User.find_by(id: self.id).present? do
