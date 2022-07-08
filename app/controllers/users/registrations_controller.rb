@@ -10,9 +10,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @user = User.new(sign_up_params)
+    unless @user.valid?
+    flash.now[:alert] = @user.errors.full_messages
+    render :new and return
+    end
+    ActiveRecord::Base.transaction do
+      @user.save
+      PeriodicMail.create(user_id: @user.id)
+      sign_in(:user, @user)
+      redirect_to root_path
+    rescue
+      raise ActiveRecord::Rollback
+      flash.now[:alert] = "関連データの作成に失敗しました"
+      render :new
+    end
+  end
 
   # GET /resource/edit
   # def edit
