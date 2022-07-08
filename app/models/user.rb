@@ -8,7 +8,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 10 } 
 
-  has_one :periodic_mail, dependent: :destroy
+  has_one  :periodic_mail, dependent: :destroy
+  has_many :categories, dependent: :destroy
 
   private
   def set_uuid
