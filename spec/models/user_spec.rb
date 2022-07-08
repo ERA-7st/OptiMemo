@@ -46,4 +46,13 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe "アソシエーション" do
+    context "PeriodicMailモデル" do
+      example "1:1になっている" do
+        expect(User.reflect_on_association(:periodic_mail).macro).to eq :has_one
+      end
+    end
+  end
+
 end
