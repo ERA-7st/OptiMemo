@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe PeriodicMail, type: :model do
 
+  let(:user) { create(:user) }
   describe "バリデーション" do
-    describe "ユーザーID" do
-      context "存在する場合" do
-        example "保存される" do
-          user = create(:user)
-          expect(PeriodicMail.create(user_id: user.id)).to be_valid
-        end
+    context "全ての値が正しい場合" do
+      example "保存される" do
+        expect(PeriodicMail.create(user_id: user.id)).to be_valid
       end
+    end
+    describe "ユーザーID" do
       context "空の場合" do
         example "保存されない" do
           expect(PeriodicMail.create).to be_invalid
@@ -25,7 +25,6 @@ RSpec.describe PeriodicMail, type: :model do
 
   describe "値" do
     example "真偽値が正しく保存されている" do
-      user = create(:user)
       periodic_mail = PeriodicMail.create(user_id: user.id)
       expect(periodic_mail.sun).to eq true
       expect(periodic_mail.mon).to eq false
@@ -41,6 +40,14 @@ RSpec.describe PeriodicMail, type: :model do
     context "Userモデル" do
       example "1:1になっている" do
         expect(PeriodicMail.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+    end
+  end
+
+  describe "メソッド" do
+    context "ID" do
+      example "ユニークな乱数になっている" do
+        expect(build(:periodic_mail, user_id: user.id).id).to_not eq 1
       end
     end
   end

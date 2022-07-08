@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe User, type: :model do
 
   describe "バリデーション" do
-    context "値が全て存在する場合" do
+    context "全ての値が正しい場合" do
       example "保存される" do
         expect(create(:user)).to be_valid
       end
@@ -51,6 +51,19 @@ RSpec.describe User, type: :model do
     context "PeriodicMailモデル" do
       example "1:1になっている" do
         expect(User.reflect_on_association(:periodic_mail).macro).to eq :has_one
+      end
+    end
+    context "Categoryモデル" do
+      example "1対Nになっている" do
+        expect(User.reflect_on_association(:categories).macro).to eq :has_many
+      end
+    end
+  end
+
+  describe "メソッド" do
+    context "ID" do
+      example "ユニークな乱数になっている" do
+        expect(build(:user).id).to_not eq 1
       end
     end
   end

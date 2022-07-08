@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_08_071952) do
     t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_categories_on_user_id", unique: true
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "periodic_mails", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
