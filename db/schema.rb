@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_08_071952) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_09_081959) do
   create_table "categories", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "user_id", null: false
     t.string "name", default: "", null: false
@@ -47,6 +47,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_08_071952) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "words", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "user_id", null: false
+    t.string "word", default: "", null: false
+    t.string "converted_word", default: "", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_words_on_user_id"
+  end
+
   add_foreign_key "categories", "users"
   add_foreign_key "periodic_mails", "users"
+  add_foreign_key "words", "users"
 end
