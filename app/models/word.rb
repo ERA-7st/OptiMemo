@@ -2,7 +2,7 @@ class Word < ApplicationRecord
   before_create :set_uuid
   belongs_to :user
 
-  validates :word, :user_id, :converted_word, :content, presence: true
+  validates :word, :user_id, :content, presence: true
   validates :word, length: { maximum: 20 }
   validates :word, uniqueness: { scope: :user_id }
 

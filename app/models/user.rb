@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_one  :periodic_mail, dependent: :destroy
   has_many :categories, dependent: :destroy
+  has_many :words, dependent: :destroy
 
   private
   def set_uuid

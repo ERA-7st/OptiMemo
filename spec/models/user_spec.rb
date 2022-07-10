@@ -58,6 +58,11 @@ RSpec.describe User, type: :model do
         expect(User.reflect_on_association(:categories).macro).to eq :has_many
       end
     end
+    context "Wordモデル" do
+      example "1対Nになっている" do
+        expect(User.reflect_on_association(:words).macro).to eq :has_many
+      end
+    end
   end
 
   describe "メソッド" do

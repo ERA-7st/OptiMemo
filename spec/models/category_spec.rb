@@ -33,13 +33,13 @@ RSpec.describe Category, type: :model do
           expect(user.categories.build(name: "a" * 21 )).to be_invalid
         end
       end
-      context "同一ユーザーの同カテゴリー名" do
+      context "同一ユーザーのカテゴリー名重複" do
         example "保存されない" do
           category = create(:category, user_id: user.id)
           expect(build(:category, user_id: user.id)).to be_invalid
         end
       end
-      context "異なるユーザーのどうカテゴリー名" do
+      context "異なるユーザーのカテゴリー名重複" do
         example "保存される" do
           category = create(:category, user_id: user.id)
           expect(build(:category, user_id: user2.id)).to be_valid
@@ -52,6 +52,10 @@ RSpec.describe Category, type: :model do
     context "Userモデル" do
       example "N対1になっている" do
         expect(Category.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+      example "親モデルと同時に削除される" do
+        create(:category, user_id: user.id)
+        expect{user.destroy}.to change { Category.count }.by(-1)
       end
     end
   end
