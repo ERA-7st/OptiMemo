@@ -41,6 +41,10 @@ RSpec.describe PeriodicMail, type: :model do
       example "1:1になっている" do
         expect(PeriodicMail.reflect_on_association(:user).macro).to eq :belongs_to
       end
+      example "親モデルと同時に削除される" do
+        PeriodicMail.create(user_id: user.id)
+        expect{user.destroy}.to change { PeriodicMail.count }.by(-1)
+      end
     end
   end
 
