@@ -50,7 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_09_081959) do
   create_table "words", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "user_id", null: false
     t.string "word", default: "", null: false
-    t.string "converted_word", default: "", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
