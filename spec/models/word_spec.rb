@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Word, type: :model do
 
   let(:user) { create(:user) }
+
   describe "バリデーション" do
     context "全ての値が正しい場合" do
       example "保存される" do
@@ -62,7 +63,17 @@ RSpec.describe Word, type: :model do
       end
       example "親モデルと同時に削除される" do
         create(:word, user_id: user.id)
-        expect{user.destroy}.to change { Word.count }.by(-1)
+        expect{user.destroy}.to change {Word.count}.by(-1)
+      end
+    end
+    context "Categoryモデル" do
+      example "N対Nになっている" do
+        expect(Word.reflect_on_association(:categories).macro).to eq :has_many
+      end
+    end
+    context "CategoryWordモデル" do
+      example "1対Nになっている" do
+        expect(Word.reflect_on_association(:category_words).macro).to eq :has_many
       end
     end
   end

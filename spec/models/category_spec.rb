@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Category, type: :model do
 
   let(:user)  { create(:user) }
+
   describe "バリデーション" do
     context "全ての値が正しい場合" do
       example "保存される" do
@@ -55,7 +56,17 @@ RSpec.describe Category, type: :model do
       end
       example "親モデルと同時に削除される" do
         create(:category, user_id: user.id)
-        expect{user.destroy}.to change { Category.count }.by(-1)
+        expect{user.destroy}.to change {Category.count}.by(-1)
+      end
+    end
+    context "Wordモデル" do
+      example "N対Nになっている" do
+        expect(Category.reflect_on_association(:words).macro).to eq :has_many
+      end
+    end
+    context "CategoryWordモデル" do
+      example "1対Nになっている" do
+        expect(Category.reflect_on_association(:category_words).macro).to eq :has_many
       end
     end
   end
@@ -67,4 +78,5 @@ RSpec.describe Category, type: :model do
       end
     end
   end
+
 end
