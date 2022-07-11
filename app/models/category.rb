@@ -1,6 +1,9 @@
 class Category < ApplicationRecord
   before_create :set_uuid
+
   belongs_to :user
+  has_many :category_words
+  has_many :words, through: :category_words
 
   validates :name, :user_id, presence: true
   validates :name, length: { maximum: 20 }
