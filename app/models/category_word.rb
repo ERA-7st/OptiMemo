@@ -15,8 +15,4 @@ class CategoryWord < ApplicationRecord
     end
   end
 
-  # def user_match?
-    
-  # end
-  
 end

@@ -1,7 +1,8 @@
 class Word < ApplicationRecord
   before_create :set_uuid
+
   belongs_to :user
-  has_many :category_words
+  has_many :category_words, dependent: :destroy
   has_many :categories, through: :category_words
 
   validates :word, :user_id, :content, presence: true
