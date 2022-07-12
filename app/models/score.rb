@@ -4,7 +4,7 @@ class Score < ApplicationRecord
   belongs_to :word
 
   validates :word_id, :correct_count, :wrong_count, :phase, :days_left, presence: true
-  validates :correct_count, :wrong_count, :phase, :phase, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+  validates :correct_count, :wrong_count, :phase, :days_left, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validates :word_id, uniqueness: true
 
   def set_uuid

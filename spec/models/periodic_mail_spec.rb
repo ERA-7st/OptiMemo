@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe PeriodicMail, type: :model do
 
   let(:user) { create(:user) }
+
   describe "バリデーション" do
     context "全ての値が正しい場合" do
       example "保存される" do
@@ -38,7 +39,7 @@ RSpec.describe PeriodicMail, type: :model do
 
   describe "アソシエーション" do
     context "Userモデル" do
-      example "1:1になっている" do
+      example "1対1になっている" do
         expect(PeriodicMail.reflect_on_association(:user).macro).to eq :belongs_to
       end
       example "親モデルと同時に削除される" do

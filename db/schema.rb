@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_12_054049) do
     t.integer "correct_count", default: 0, null: false, unsigned: true
     t.integer "wrong_count", default: 0, null: false, unsigned: true
     t.integer "phase", default: 0, null: false, unsigned: true
-    t.integer "days＿left", default: 1, null: false, unsigned: true
+    t.integer "days_left", default: 1, null: false, unsigned: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["word_id"], name: "index_scores_on_word_id", unique: true
