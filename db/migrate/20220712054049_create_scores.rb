@@ -6,7 +6,7 @@ class CreateScores < ActiveRecord::Migration[7.0]
       t.integer :correct_count, null: false, unsigned: true, default: 0
       t.integer :wrong_count, null: false, unsigned: true, default: 0
       t.integer :phase, null: false, unsigned: true, default: 0
-      t.integer :days＿left, null: false, unsigned: true, default: 1
+      t.integer :days_left, null: false, unsigned: true, default: 1
       t.timestamps
     end
   end

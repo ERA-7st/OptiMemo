@@ -66,6 +66,11 @@ RSpec.describe Word, type: :model do
         expect{user.destroy}.to change {Word.count}.by(-1)
       end
     end
+    context "Scoreモデル" do
+      example "1対1になっている" do
+        expect(Word.reflect_on_association(:score).macro).to eq :has_one
+      end
+    end
     context "Categoryモデル" do
       example "N対Nになっている" do
         expect(Word.reflect_on_association(:categories).macro).to eq :has_many
