@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_11_053806) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_12_054049) do
   create_table "categories", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "user_id", null: false
     t.string "name", default: "", null: false
@@ -42,6 +42,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_053806) do
     t.index ["user_id"], name: "index_periodic_mails_on_user_id", unique: true
   end
 
+  create_table "scores", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "word_id", null: false
+    t.integer "correct_count", default: 0, null: false, unsigned: true
+    t.integer "wrong_count", default: 0, null: false, unsigned: true
+    t.integer "phase", default: 0, null: false, unsigned: true
+    t.integer "days＿left", default: 1, null: false, unsigned: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["word_id"], name: "index_scores_on_word_id", unique: true
+  end
+
   create_table "users", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -69,5 +80,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_053806) do
   add_foreign_key "category_words", "categories"
   add_foreign_key "category_words", "words"
   add_foreign_key "periodic_mails", "users"
+  add_foreign_key "scores", "words"
   add_foreign_key "words", "users"
 end
