@@ -2,6 +2,7 @@ class Word < ApplicationRecord
   before_create :set_uuid
 
   belongs_to :user
+  has_one  :score, dependent: :destroy
   has_many :category_words, dependent: :destroy
   has_many :categories, through: :category_words
 
