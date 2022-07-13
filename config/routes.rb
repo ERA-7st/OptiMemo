@@ -11,4 +11,8 @@ Rails.application.routes.draw do
     get "home/top" => "home#top"
   end
 
+  scope module: :user do
+    resources :categories, only: [:index]
+  end
+
 end

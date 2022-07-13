@@ -1,0 +1,5 @@
+= render "user/shared/header"
+%h2 カテゴリー一覧
+- @categories.each do |category|
+  = category.name
+  %br
