@@ -20,7 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.save
       PeriodicMail.create(user_id: @user.id)
       sign_in(:user, @user)
-      redirect_to root_path
+      redirect_to user_home_top_path
     rescue
       raise ActiveRecord::Rollback
       flash.now[:alert] = "関連データの作成に失敗しました"

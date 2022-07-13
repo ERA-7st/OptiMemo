@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  root to: 'user/home#top'
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root to: 'home#top'
+
+  namespace :user do
+    get "home/top" => "home#top"
+  end
+
 end
