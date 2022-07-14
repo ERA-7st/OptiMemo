@@ -1,5 +1,11 @@
 = render "user/shared/header"
+%br
 %h2 カテゴリー一覧
+#categories_error
+  = render 'layouts/error_message', model: @new_category
+= form_with model:@new_category do |f|
+  = f.text_field :name
+  = f.submit "追加"
 - @categories.each do |category|
   = category.name
   %br

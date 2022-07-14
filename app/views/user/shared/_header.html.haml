@@ -1,4 +1,7 @@
 %h1 OptiMemo
 = button_to "LOG_OUT", destroy_user_session_path, method: :delete
 = current_user.name
+%br
+= link_to "ホーム", user_home_top_path
+%br
 = link_to "カテゴリー一覧", categories_path
