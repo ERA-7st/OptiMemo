@@ -1,5 +1,6 @@
 = render "user/shared/header"
 %br
 %h2 単語一覧
+= link_to "+", new_word_path
 - @words.each do |word|
   - word.name

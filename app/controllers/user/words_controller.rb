@@ -6,4 +6,8 @@ class User::WordsController < ApplicationController
     @words = current_user.words.all
   end
 
+  def new
+    @new_word = Word.new
+  end
+
 end
