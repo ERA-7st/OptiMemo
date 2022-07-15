@@ -3,7 +3,7 @@ class User::CategoriesController < ApplicationController
   before_action :user_logged_in?
 
   def index
-    @categories = current_user.categories.all.by_recently_created
+    @categories = current_user.categories.all.by_recently_updated
     @new_category = Category.new
   end
 
