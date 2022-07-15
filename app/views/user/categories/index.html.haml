@@ -8,4 +8,5 @@
   = f.submit "追加"
 - @categories.each do |category|
   = category.name
+  = button_to "削除", category_path(category), method: :delete
   %br
