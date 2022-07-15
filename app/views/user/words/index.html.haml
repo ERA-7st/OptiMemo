@@ -2,5 +2,7 @@
 %br
 %h2 単語一覧
 = link_to "+", new_word_path
+%br
 - @words.each do |word|
-  - word.name
+  = word.word
+  %br
