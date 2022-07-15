@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
     redirect_to user_home_top_path if user_signed_in?
   end
 
-
   def after_sign_in_path_for(resource)
     user_home_top_path
   end
