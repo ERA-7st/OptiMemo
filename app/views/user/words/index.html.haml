@@ -5,4 +5,6 @@
 %br
 - @words.each do |word|
   = word.word
+  = button_to word_path(word), method: :delete do
+    %i.fa-solid.fa-delete-left
   %br

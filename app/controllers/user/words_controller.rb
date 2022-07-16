@@ -29,6 +29,11 @@ class User::WordsController < ApplicationController
     end
   end
 
+  def destroy
+    Word.find(params[:id]).destroy
+    redirect_back(fallback_location: user_home_top_path)
+  end
+
   private
 
   def word_params
