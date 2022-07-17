@@ -1,0 +1,12 @@
+= render "user/shared/header"
+%br
+%h2 単語一覧
+= link_to "+", new_word_path
+%br
+%table
+  - @words.each do |word|
+    %tr
+      %th= word.word
+      %th
+        = button_to word_path(word), method: :delete do
+          %i.fa-solid.fa-delete-left

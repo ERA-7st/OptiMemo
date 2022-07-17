@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   scope module: :user do
     resources :categories, only: [:index, :create, :destroy]
+    resources :words
   end
 
 end
