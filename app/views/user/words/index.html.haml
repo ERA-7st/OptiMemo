@@ -3,8 +3,10 @@
 %h2 単語一覧
 = link_to "+", new_word_path
 %br
-- @words.each do |word|
-  = word.word
-  = button_to word_path(word), method: :delete do
-    %i.fa-solid.fa-delete-left
-  %br
+%table
+  - @words.each do |word|
+    %tr
+      %th= word.word
+      %th
+        = button_to word_path(word), method: :delete do
+          %i.fa-solid.fa-delete-left

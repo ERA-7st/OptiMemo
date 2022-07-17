@@ -20,6 +20,10 @@ class User::CategoriesController < ApplicationController
     end
   end
 
+  def show
+    
+  end
+
   def destroy
     Category.find(params[:id]).destroy
     redirect_back(fallback_location: user_home_top_path)
