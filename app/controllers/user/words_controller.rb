@@ -10,6 +10,10 @@ class User::WordsController < ApplicationController
     @new_word = Word.new
   end
 
+  def show
+    @word = Word.find(params[:id])
+  end
+
   def create
     begin
       ActiveRecord::Base.transaction do
