@@ -6,7 +6,7 @@
 %table
   - @words.each do |word|
     %tr
-      %th= word.word
+      %th= link_to word.word, word_path(word), data: { turbo_frame: "modal" }
       %th
         = button_to word_path(word), method: :delete do
           %i.fa-solid.fa-delete-left

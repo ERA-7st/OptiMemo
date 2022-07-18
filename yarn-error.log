@@ -1,0 +1,35 @@
+Arguments: 
+  /usr/bin/node /usr/share/yarn/bin/yarn.js build:css
+
+PATH: 
+  /usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  12.22.12
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /OptiMemo/package.json: Unexpected string in JSON at position 41
+      at JSON.parse (<anonymous>)
+      at /usr/share/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:310:30)
+      at /usr/share/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "app",
+    "private": "true"
+    "scripts": { "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules" }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

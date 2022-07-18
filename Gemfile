@@ -79,3 +79,5 @@ end
 gem 'devise'
 gem 'haml-rails'
 gem 'pry-byebug'
+gem "cssbundling-rails"
+gem 'jsbundling-rails'
