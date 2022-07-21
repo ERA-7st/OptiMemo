@@ -21,6 +21,11 @@ class User::WordsController < ApplicationController
         @word.save!
         @score = Score.new(word_id: @word.id)
         @score.save!
+        if params[:seted_categories]
+          params[:seted_categories].each do |id|
+            @word.category_words.create(category_id: id)
+          end
+        end
         redirect_to words_path
       end
     rescue => e

@@ -8,9 +8,7 @@ export default class extends Controller {
     this.modal.show()
   }
 
-  close(event) {
-    if (event.detail.success) {
-      this.modal.hide()
-    }
+  close() {
+    this.modal.hide()
   }
 }

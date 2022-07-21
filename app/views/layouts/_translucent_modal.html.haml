@@ -1,0 +1,7 @@
+= turbo_frame_tag "category_index_modal" do
+  .modal.fade{"data-controller" => "modal"}
+    %div{class: "modal-dialog"}
+      %div{class: "modal-content"}
+        %div{class: "modal-body"}
+          = yield
+        %button{type: "button", class: "btn-close", "data-bs-dismiss" => "modal", "aria-label" => "Close"}
