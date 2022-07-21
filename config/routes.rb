@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get "category_words/modal_index" => "category_words#modal_index", as: "category_words_modal_index"
     get "category_words/set_category/:id" => "category_words#set_category", as: "set_category"
     get "category_words/remove_category/:id" => "category_words#remove_category", as: "remove_category"
+    get "category_words/set_new_category" => "category_words#set_new_category", as: "set_new_category"
   end
 
 end

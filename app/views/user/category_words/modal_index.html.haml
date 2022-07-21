@@ -1,2 +1,3 @@
 = render "layouts/translucent_modal" do
-  = render "modal_index_modal", categories: @categories, seted_categories: @seted_categories
+  = render "set_category_modal", categories: @categories, seted_categories: @seted_categories
+  = render "set_new_category_modal", seted_categories: @seted_categories, new_categories: @new_categories

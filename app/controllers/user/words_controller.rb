@@ -23,13 +23,14 @@ class User::WordsController < ApplicationController
         @score.save!
         if params[:seted_categories]
           params[:seted_categories].each do |id|
-            @word.category_words.create(category_id: id)
+            @category_word = @word.category_words.new(category_id: id)
+            @category_word.save!
           end
         end
         redirect_to words_path
       end
     rescue => e
-      error_model = @score || @word
+      error_model = @category_word || @score || @word
       render turbo_stream: turbo_stream.replace(
         "errors",
         partial: 'layouts/error_message',

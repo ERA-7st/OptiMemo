@@ -7,6 +7,7 @@ class User::CategoryWordsController < ApplicationController
     else
       @categories = current_user.categories.all
     end
+    @new_categories = params[:new_categories] || []
   end
 
   def set_category
@@ -30,6 +31,24 @@ class User::CategoryWordsController < ApplicationController
       partial: "seted_categories",
       locals: { seted_categories: @seted_categories },
     )
+  end
+
+  def set_new_category
+    @seted_categories = params[:seted_categories]
+    new_category = current_user.categories.new(name: params[:name])
+    if new_category.valid?
+      @new_categories = [ new_category.name ]
+      if params[:new_categories]
+        @new_categories = @new_categories.concat(params[:new_categories])
+      end
+      render turbo_stream: turbo_stream.replace(
+        "seted_categories",
+        partial: "seted_categories",
+        locals: { seted_categories: @seted_categories, new_categories: @new_categories },
+      )
+    else
+
+    end
   end
 
 end
