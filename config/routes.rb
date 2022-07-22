@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get "category_words/set_category/:id" => "category_words#set_category", as: "set_category"
     get "category_words/remove_category/:id" => "category_words#remove_category", as: "remove_category"
     get "category_words/set_new_category" => "category_words#set_new_category", as: "set_new_category"
+    get "category_words/remove_new_category/:name" => "category_words#remove_new_category", as: "remove_new_category"
   end
 
 end

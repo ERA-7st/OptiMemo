@@ -4,14 +4,15 @@
   -if seted_categories
     - seted_categories.each do | id, name |
       = name
-      = link_to remove_category_path(id, seted_categories: seted_categories) do
+      = link_to remove_category_path(id, seted_categories: seted_categories, new_categories: new_categories) do
         %i.fa-solid.fa-delete-left
       = hidden_field_tag 'seted_categories[]', id
       %br
   %br
   - if new_categories
-    -# - binding.pry
     - new_categories.each do |name|
       = name
-      %br
+      = link_to remove_new_category_path(name, seted_categories: seted_categories, new_categories: new_categories) do
+        %i.fa-solid.fa-delete-left
       = hidden_field_tag 'new_categories[]', name
+      %br

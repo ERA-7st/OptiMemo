@@ -1,7 +1,12 @@
 = turbo_frame_tag  do
+  = render 'layouts/modal_error_message', model: @new_category, error_message: ""
   = form_with url: set_new_category_path, method: :get, data: { action: "turbo:submit-end->modal#validate_close" } do |f|
     = f.text_field :name, placeholder: "新規作成"
-    = f.hidden_field :seted_categories , :value => seted_categories if seted_categories
+    -# = f.hidden_field :seted_categories , :value => seted_categories if seted_categories
+    - if seted_categories
+      - seted_categories.each do | key , val |
+        = hidden_field_tag "seted_categories[#{key}]", val
+        -# = f.hidden_field(:hashs, multiple: true, value: h )
     - new_categories.each do |new_category|
       = hidden_field_tag 'new_categories[]', new_category
     = f.submit "OK"
