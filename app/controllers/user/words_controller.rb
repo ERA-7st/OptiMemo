@@ -21,6 +21,14 @@ class User::WordsController < ApplicationController
         @word.save!
         @score = Score.new(word_id: @word.id)
         @score.save!
+        if params[:new_categories]
+          params[:new_categories].each do |name|
+            @new_category = current_user.categories.new(name: name)
+            @new_category.save!
+            @category_word = @word.category_words.new(category_id: @new_category.id)
+            @category_word.save!
+          end
+        end
         if params[:seted_categories]
           params[:seted_categories].each do |id|
             @category_word = @word.category_words.new(category_id: id)
@@ -30,7 +38,7 @@ class User::WordsController < ApplicationController
         redirect_to words_path
       end
     rescue => e
-      error_model = @category_word || @score || @word
+      error_model = @new_category || @category_word || @score || @word
       render turbo_stream: turbo_stream.replace(
         "errors",
         partial: 'layouts/error_message',
