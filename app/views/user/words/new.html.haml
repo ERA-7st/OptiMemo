@@ -8,6 +8,6 @@
   %br
   = f.text_area :content
   %br
-  = render "user/category_words/seted_categories", seted_categories: @seted_categories
+  = render "user/category_words/seted_categories", seted_categories: @seted_categories, new_categories: @new_categories
   = f.submit "登録"
 = turbo_frame_tag "category_index_modal"

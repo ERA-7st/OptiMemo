@@ -1,0 +1,8 @@
+%turbo-frame{id: "modal_errors"}
+  - if model && model.errors.any? 
+    %ul
+      - model.errors.full_messages.each do |message|
+        %li.error_message= message
+  - if error_message.present?
+    %ul
+      %li= error_message

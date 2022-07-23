@@ -11,4 +11,10 @@ export default class extends Controller {
   close() {
     this.modal.hide()
   }
+
+  validate_close(event) {
+    if (event.detail.success) {
+      this.modal.hide()
+    }
+  }
 }

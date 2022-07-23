@@ -1,10 +1,18 @@
 %turbo-frame{id: "seted_categories"}
-  = link_to "カテゴリー追加", category_words_modal_index_path(seted_categories: seted_categories), data: { turbo_frame: "category_index_modal" }
+  = link_to "カテゴリー追加", category_words_modal_index_path(seted_categories: seted_categories,new_categories: new_categories), data: { turbo_frame: "category_index_modal" }
   %br
   -if seted_categories
     - seted_categories.each do | id, name |
       = name
-      = link_to remove_category_path(id, seted_categories: seted_categories) do
+      = link_to remove_category_path(id, seted_categories: seted_categories, new_categories: new_categories) do
         %i.fa-solid.fa-delete-left
-      %br
       = hidden_field_tag 'seted_categories[]', id
+      %br
+  %br
+  - if new_categories
+    - new_categories.each do |name|
+      = name
+      = link_to remove_new_category_path(name, seted_categories: seted_categories, new_categories: new_categories) do
+        %i.fa-solid.fa-delete-left
+      = hidden_field_tag 'new_categories[]', name
+      %br

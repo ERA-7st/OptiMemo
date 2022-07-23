@@ -1,4 +1,0 @@
-= turbo_frame_tag  do
-  - categories.each do |category|
-    = link_to category.name, set_category_path(id: category.id, seted_categories: seted_categories), "data-action" => "click->modal#close"
-    %br
