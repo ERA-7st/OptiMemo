@@ -8,5 +8,8 @@
     %tr
       %th= link_to word.word, word_path(word), data: { turbo_frame: "modal" }
       %th
+        = link_to edit_word_path(word) do
+          %i.fa-solid.fa-pen-to-square
+      %th
         = button_to word_path(word), method: :delete do
           %i.fa-solid.fa-delete-left

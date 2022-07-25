@@ -1,0 +1,16 @@
+= render "user/shared/header"
+%br
+%h2 編集
+#word_error
+  = render "layouts/error_message", model: @word
+= form_with model: @word do |f|
+  = f.text_field :word
+  %br
+  = f.text_area :content
+  %br
+  = render "user/category_words/seted_categories", seted_categories: @seted_categories, new_categories: @new_categories
+  = check_box_tag :reset_score
+  = label_tag :reset_score, "スコアのリセット"
+  %br
+  = f.submit "更新"
+= turbo_frame_tag "category_index_modal"
