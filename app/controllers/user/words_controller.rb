@@ -62,8 +62,15 @@ class User::WordsController < ApplicationController
       ActiveRecord::Base.transaction do
         @word = current_user.words.find(params[:id])
         @word.update!(word_params)
-        # @score = Score.new(word_id: @word.id)
-        # @score.save!
+        if params[:reset_score]
+          @score = @word.score
+          @score.update!(
+            correct_count: 0,
+            wrong_count: 0,
+            phase: 0,
+            days_left: 1
+          )
+        end
         before_update_categories = []
         @word.categories.each do |category|
           before_update_categories.push(category.id) 
