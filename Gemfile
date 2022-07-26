@@ -81,3 +81,4 @@ gem 'haml-rails'
 gem 'pry-byebug'
 gem "cssbundling-rails"
 gem 'jsbundling-rails'
+gem 'whenever', :require => false
