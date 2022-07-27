@@ -1,0 +1,8 @@
+= render "user/shared/header"
+%br
+%h2= "復習(#{@words.count}件)"
+%table
+  - @words.each do |word|
+    %tr
+      %th= word.word
+      %th= updat_day_subtraction(word.score.updated_at)
