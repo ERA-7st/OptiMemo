@@ -1,0 +1,5 @@
+%turbo-frame{id: "word_content" }
+  - if display == "true"
+    = word.content
+  - else
+    = link_to "確認", confirm_path(word)

@@ -1,0 +1,5 @@
+= render "user/shared/header"
+%br
+%h2= "残り#{@words.count}件"
+%p= @word.word
+= render "user/reviews/word_content", display: @display, word: @word
