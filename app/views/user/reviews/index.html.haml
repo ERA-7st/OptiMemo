@@ -2,8 +2,11 @@
 %br
 %h2
   = "復習(#{@words.count}件)"
-  = link_to check_path do
+  - if @words.count == 0
     %i.fas.fa-tasks
+  - else
+    = link_to check_path do
+      %i.fas.fa-tasks
 %table
   - @words.each do |word|
     %tr

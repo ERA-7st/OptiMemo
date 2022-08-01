@@ -1,15 +1,19 @@
 class User::ReviewsController < ApplicationController
 
+  include Reviews
+
   before_action :user_logged_in?
   before_action :set_words, only: [:index, :check]
-  before_action :word_id_certification, only: [:confirm]
+  before_action :word_id_certification, only: [:confirm, :remember, :ambiguous, :forget]
   
   def indexd
     @display = "false"
   end
 
   def check
-    @word = @words.first
+    unless @words.count == 0
+      @word = @words.first
+    end
   end
 
   def confirm
@@ -18,6 +22,40 @@ class User::ReviewsController < ApplicationController
       partial: 'user/reviews/word_content',
       locals: { display: "true", word: @word}
     )
+  end
+
+  def remember
+    score = @word.score
+    phase = update_phase(score.phase, "remember")
+    days_left = set_days_left(phase)
+    score.update(
+      correct_count: score.correct_count + 1,
+      days_left: days_left,
+      phase: phase
+    )
+    redirect_to check_path
+  end
+
+  def ambiguous
+    score = @word.score
+    days_left = set_days_left(score.phase)
+    score.update(
+      wrong_count: score.wrong_count + 1,
+      days_left: days_left,
+    ) 
+    redirect_to check_path
+  end
+
+  def forget
+    score = @word.score
+    phase = update_phase(score.phase, "forget")
+    days_left = set_days_left(phase)
+    score.update(
+      wrong_count: score.wrong_count + 1,
+      days_left: days_left,
+      phase: phase
+    ) 
+    redirect_to check_path
   end
 
   def set_words
