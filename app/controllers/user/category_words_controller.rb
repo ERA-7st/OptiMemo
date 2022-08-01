@@ -1,5 +1,7 @@
 class User::CategoryWordsController < ApplicationController
 
+  before_action :user_logged_in?
+
   def modal_index
     if params[:seted_categories]
       @categories = current_user.categories.where.not(id: params[:seted_categories].keys)

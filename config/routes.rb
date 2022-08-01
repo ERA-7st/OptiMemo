@@ -14,6 +14,12 @@ Rails.application.routes.draw do
   scope module: :user do
     resources :categories, only: [:index, :create, :destroy]
     resources :words
+    resources :reviews, only: [:index]
+    get "reviews/check" => "reviews#check", as: "check"
+    get "reviews/confirm/:id" => "reviews#confirm", as: "confirm"
+    patch "reviews/remember/:id" => "reviews#remember", as: "remember"
+    patch "reviews/ambiguous/:id" => "reviews#ambiguous", as: "ambiguous"
+    patch "reviews/forget/:id" => "reviews#forget", as: "forget"
     get "category_words/modal_index" => "category_words#modal_index", as: "category_words_modal_index"
     get "category_words/set_category/:id" => "category_words#set_category", as: "set_category"
     get "category_words/remove_category/:id" => "category_words#remove_category", as: "remove_category"

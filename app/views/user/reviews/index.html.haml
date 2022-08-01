@@ -1,0 +1,14 @@
+= render "user/shared/header"
+%br
+%h2
+  = "復習(#{@words.count}件)"
+  - if @words.count == 0
+    %i.fas.fa-tasks
+  - else
+    = link_to check_path do
+      %i.fas.fa-tasks
+%table
+  - @words.each do |word|
+    %tr
+      %th= word.word
+      %th= updat_day_subtraction(word.score.updated_at)
