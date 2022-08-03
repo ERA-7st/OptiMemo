@@ -13,8 +13,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     unless @user.valid?
-    flash.now[:alert] = @user.errors.full_messages
-    render :new and return
+      flash.now[:alert] = @user.errors.full_messages
+      render :new and return
     end
     ActiveRecord::Base.transaction do
       @user.save
@@ -52,7 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -64,10 +64,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
+  def update_resource(resource, params)
+    resource.update_without_current_password(params)
+  end
+
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def after_update_path_for(resource)
+    user_home_top_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
