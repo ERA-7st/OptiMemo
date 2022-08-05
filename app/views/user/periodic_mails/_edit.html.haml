@@ -1,0 +1,3 @@
+%turbo-frame{id: "change_periodic_mail_#{week}" }
+  = button_to "#{week_button_text(week)}",  periodic_mail_path(current_user.periodic_mail, week: week), method: :patch
+  -# week_button_text -> helpers/user/periodic_mails_helper

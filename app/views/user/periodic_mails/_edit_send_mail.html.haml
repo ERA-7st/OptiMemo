@@ -1,0 +1,7 @@
+%turbo-frame{id: "change_send_mail" }
+  - if current_user.send_mail == true
+    %p 定時メールが有効です
+    = button_to "無効にする", edit_send_mail_path, method: :patch
+  - else 
+    %p 定時メールが無効です
+    = button_to "有効にする", edit_send_mail_path, method: :patch

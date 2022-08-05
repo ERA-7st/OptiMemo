@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   scope module: :user do
     resources :categories, only: [:index, :create, :destroy]
     resources :words
+    patch "periodic_mails/edit_send_mail" => "periodic_mails#edit_send_mail", as: "edit_send_mail"
+    resources :periodic_mails, only: [:edit, :update]
     resources :reviews, only: [:index]
     get "reviews/check" => "reviews#check", as: "check"
     get "reviews/confirm/:id" => "reviews#confirm", as: "confirm"
