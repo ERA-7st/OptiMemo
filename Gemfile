@@ -77,6 +77,7 @@ group :test do
 end
 
 gem 'devise'
+gem 'dotenv-rails'
 gem 'haml-rails'
 gem 'pry-byebug'
 gem "cssbundling-rails"

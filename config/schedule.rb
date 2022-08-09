@@ -11,3 +11,11 @@ every 1.day, at: '00:00 am' do
     raise e
   end
 end
+
+every 1.day, at: "12:00 pm" do
+  begin
+    rake "review_mail:send_email"
+  rescue => e
+    raise e
+  end
+end
