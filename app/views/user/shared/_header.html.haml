@@ -1,9 +1,21 @@
-%h1 OptiMemo
-= button_to "LOG_OUT", destroy_user_session_path, method: :delete
-= current_user.name
-= link_to edit_user_registration_path do
-  %i.fas.fa-cog
-%br
+%header
+  %nav.navbar.navbar-light.navbar-expand-lg{ "style" => "background-color: #e3f2fd;"}
+    .container
+      %h1.navbar-brand OptiMemo
+      .button.navbar-toggler{ "type" => "button", "data-bs-toggle" => "collapse", "data-bs-target" => "#navbarNav", "aria-controls" => "navbarNav",  "aria-expanded" => "false", "aria-label" => "Toggle navigation"}
+        %span.navbar-toggler-icon
+      .collapse.navbar-collapse#navbarNav
+        %ul.navbar-nav.ms-auto
+          %li.nav-item
+            .navbar-text.nav-user-name= current_user.name
+          %li.nav-item
+            = link_to edit_user_registration_path, class: "nav-link" do
+              %i.fas.fa-cog.nav-icon
+              .nav-text 編集
+          %li.nav-item
+            = link_to destroy_user_session_path, class: "nav-link", data: { turbo_method: :delete } do
+              %i.fas.fa-sign-out-alt.nav-icon
+              .nav-text ログアウト
 = link_to "ホーム", user_home_top_path
 %br
 = link_to "カテゴリー一覧", categories_path
