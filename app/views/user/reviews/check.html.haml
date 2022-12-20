@@ -1,5 +1,3 @@
-= render "user/shared/header"
-%br
 %turbo-frame{id: "check" }
   - if @word
     %h2= "残り#{@words.count}件"
