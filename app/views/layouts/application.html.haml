@@ -10,5 +10,8 @@
     = javascript_importmap_tags
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
   %body
-    = yield
+    - if user_signed_in?
+      = render "user/shared/header"
+    .container-fluid#main
+      = yield
     = turbo_frame_tag "modal"

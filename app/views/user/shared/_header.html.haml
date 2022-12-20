@@ -16,12 +16,4 @@
             = link_to destroy_user_session_path, class: "nav-link", data: { turbo_method: :delete } do
               %i.fas.fa-sign-out-alt.nav-icon
               .nav-text ログアウト
-= link_to "ホーム", user_home_top_path
-%br
-= link_to "カテゴリー一覧", categories_path
-%br
-= link_to "単語一覧", words_path
-%br
-= link_to "復習", reviews_path
-%br
-= link_to "メール設定", edit_periodic_mail_path(current_user.periodic_mail)
+= render "user/shared/sidebar"

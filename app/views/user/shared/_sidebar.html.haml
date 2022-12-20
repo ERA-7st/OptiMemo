@@ -1,0 +1,39 @@
+%input#openSidebarMenu.openSidebarMenu{ type: "checkbox" }
+  %label.sidebarIconToggle{ for: "openSidebarMenu" }
+    .spinner.diagonal.part-1
+    .spinner.horizontal
+    .spinner.diagonal.part-2
+#sidebarMenu
+  %ul.sidebarMenuInner
+    %li
+      .sidebarLink= link_to "ホーム", user_home_top_path
+    %li
+      .sidebarLink= link_to "復習", reviews_path
+    %li
+      .sidebarLink= link_to "カテゴリー", categories_path
+    %li
+      .sidebarLink= link_to "単語一覧", words_path
+    %li
+      .sidebarLink= link_to "メール設定", edit_periodic_mail_path(current_user.periodic_mail)
+#sidebarIcon
+  %ul
+    %li
+      = link_to user_home_top_path do
+        %i.fa-solid.fa-house.sidebarIcon
+    %li
+      = link_to reviews_path do
+        %i.fa-solid.fa-check.sidebarIcon
+    %li
+      = link_to categories_path do
+        %i.fa-solid.fa-list.sidebarIcon
+        .optionalText W
+    %li
+      = link_to words_path do
+        %i.fa-solid.fa-list.sidebarIcon
+      .optionalText C
+    %li
+      = link_to edit_periodic_mail_path(current_user.periodic_mail) do
+        %i.fa-solid.fa-square-envelope.sidebarIcon
+      
+
+
