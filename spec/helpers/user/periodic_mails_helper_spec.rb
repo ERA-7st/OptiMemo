@@ -1,15 +1,25 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the User::PeriodicMailsHelper. For example:
-#
-# describe User::PeriodicMailsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe User::PeriodicMailsHelper, type: :helper do
-  # pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:user) { create(:user) }
+  let!(:periodic_mail) { create(:periodic_mail, user_id: user.id) }
+
+  before do
+    allow(helper).to receive(:current_user).and_return(user)
+  end
+
+  describe "week_button_text" do
+    context "メール受け取りがtrueの場合" do
+      example "文字列 ON を返す" do
+        expect(helper.week_button_text("sun")).to eq("ON")
+      end
+    end
+    context "メール受け取りがfalseの場合" do
+      example "文字列 OFF を返す" do
+        expect(helper.week_button_text("mon")).to eq("OFF")
+      end
+    end
+  end
+
 end
