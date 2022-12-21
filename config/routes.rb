@@ -22,6 +22,13 @@ Rails.application.routes.draw do
     patch "reviews/remember/:id" => "reviews#remember", as: "remember"
     patch "reviews/ambiguous/:id" => "reviews#ambiguous", as: "ambiguous"
     patch "reviews/forget/:id" => "reviews#forget", as: "forget"
+
+    get "each_reviews/check/:id" => "each_reviews#check", as: "each_check"
+    get "each_reviews/confirm/:id" => "each_reviews#confirm", as: "each_confirm"
+    patch "each_reviews/remember/:id" => "each_reviews#remember", as: "each_remember"
+    patch "each_reviews/ambiguous/:id" => "each_reviews#ambiguous", as: "each_ambiguous"
+    patch "each_reviews/forget/:id" => "each_reviews#forget", as: "each_forget"
+
     get "category_words/modal_index" => "category_words#modal_index", as: "category_words_modal_index"
     get "category_words/set_category/:id" => "category_words#set_category", as: "set_category"
     get "category_words/remove_category/:id" => "category_words#remove_category", as: "remove_category"

@@ -1,0 +1,11 @@
+%turbo-frame{id: "word_content" }
+  - if display == "true"
+    = word.content
+    = button_to each_remember_path(word), method: :patch, data: { turbo: false } do
+      %i.fas.fa-check-circle
+    = button_to each_ambiguous_path(word), method: :patch, data: { turbo: false } do
+      %i.fas.fa-question-circle
+    = button_to each_forget_path(word), method: :patch, data: { turbo: false } do
+      %i.fas.fa-times-circle
+  - else
+    = link_to "確認", each_confirm_path(word)

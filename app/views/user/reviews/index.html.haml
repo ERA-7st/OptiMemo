@@ -5,8 +5,17 @@
   - else
     = link_to check_path do
       %i.fas.fa-tasks
-%table
-  - @words.each do |word|
+%table.table.table-hover.table-striped
+  %thead.table-dark
     %tr
-      %th= word.word
-      %th= updat_day_subtraction(word.score.updated_at)
+      %td name
+      %td phase
+      %td day
+  %tbody.table-secondary
+    - count = 1
+    - @words.each do |word|
+      %tr.position-relative
+        %th= link_to word.word, each_check_path(word), class: "stretched-link text-decoration-none text-dark"
+        %th= word.score.phase
+        %th= updat_day_subtraction(word.score.updated_at)
+      - count += 1

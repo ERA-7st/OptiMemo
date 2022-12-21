@@ -12,4 +12,5 @@ module User::ReviewsHelper
       "一ヶ月以上前"
     end
   end
+
 end
