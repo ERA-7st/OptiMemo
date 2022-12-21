@@ -12,4 +12,9 @@ module User::ReviewsHelper
       "一ヶ月以上前"
     end
   end
+
+  def alternate_color_table(count)
+    count.even? ? "table-secondary" : "default-table"
+  end
+
 end
