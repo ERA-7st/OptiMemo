@@ -13,8 +13,4 @@ module User::ReviewsHelper
     end
   end
 
-  def alternate_color_table(count)
-    count.even? ? "table-secondary" : "default-table"
-  end
-
 end
