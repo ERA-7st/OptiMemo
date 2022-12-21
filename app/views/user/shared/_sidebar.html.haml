@@ -23,12 +23,14 @@
     %li
       = link_to reviews_path do
         %i.fa-solid.fa-check.sidebarIcon
+        -if unchecked_words != 0
+          .review_count=unchecked_words
     %li
-      = link_to categories_path do
+      = link_to words_path do
         %i.fa-solid.fa-list.sidebarIcon
         .optionalText W
     %li
-      = link_to words_path do
+      = link_to categories_path do
         %i.fa-solid.fa-list.sidebarIcon
       .optionalText C
     %li
