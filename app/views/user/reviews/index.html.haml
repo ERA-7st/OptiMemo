@@ -17,5 +17,5 @@
       %tr.position-relative
         %th= link_to word.word, each_check_path(word), class: "stretched-link text-decoration-none text-dark"
         %th= word.score.phase
-        %th= updat_day_subtraction(word.score.updated_at)
+        %th= update_day_subtraction(word.score.updated_at)
       - count += 1

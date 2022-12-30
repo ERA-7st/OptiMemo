@@ -1,15 +1,27 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the User::ReviewsHelper. For example:
-#
-# describe User::ReviewsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe User::ReviewsHelper, type: :helper do
-  # pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "update_day_subtraction" do
+    context "差が0の場合" do
+      example "文字列 今日 を返す" do
+        expect(helper.update_day_subtraction(Time.zone.now)).to eq("今日")
+      end
+    end
+    context "差が1〜31の場合" do
+      example "文字列　(差分)日前 を返す" do
+        min_day_after = Time.zone.now - 1.days
+        expect(helper.update_day_subtraction(min_day_after)).to eq("1日前")
+        max_days_after = Time.zone.now - 31.days
+        expect(helper.update_day_subtraction(max_days_after)).to eq("31日前")
+      end
+    end
+    context "差が32以上の場合" do
+      example "文字列 一ヶ月以上前 を返す" do
+        month_after = Time.zone.now - 32.days
+        expect(helper.update_day_subtraction(month_after)).to eq("一ヶ月以上前")
+      end
+    end
+  end
+
 end
