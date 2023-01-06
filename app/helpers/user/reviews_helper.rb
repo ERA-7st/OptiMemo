@@ -1,6 +1,6 @@
 module User::ReviewsHelper
 
-  def updat_day_subtraction(updated_at)
+  def update_day_subtraction(updated_at)
     past_seconds = Time.zone.now - updated_at
     pastdays = (past_seconds / 1.days).floor
     case pastdays
