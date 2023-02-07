@@ -1,11 +1,12 @@
-%h2 新規作成
-#word_error
-  = render "layouts/error_message", model: @new_word
-= form_with model: @new_word do |f|
-  = f.text_field :word
-  %br
-  = f.text_area :content
-  %br
-  = render "user/category_words/seted_categories", seted_categories: @seted_categories, new_categories: @new_categories
-  = f.submit "登録"
-= turbo_frame_tag "category_index_modal"
+#new_word
+  %h2 新規作成
+  #word_error
+    = render "layouts/error_message", model: @new_word
+  = form_with model: @new_word do |f|
+    = f.text_field :word
+    %br
+    = f.text_area :content, rows: 10
+    %br
+    = render "user/category_words/seted_categories", seted_categories: @seted_categories, new_categories: @new_categories
+    = f.submit "登録"
+  = turbo_frame_tag "category_index_modal"

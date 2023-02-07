@@ -1,2 +1,2 @@
 = turbo_frame_tag word do
-  =word.content
+  =safe_join(word.content.split("\n"),tag(:br))

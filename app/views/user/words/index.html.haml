@@ -1,13 +1,14 @@
 %h2 単語一覧
 = link_to "+", new_word_path
 %br
-%table
-  - @words.each do |word|
-    %tr
-      %th= link_to word.word, word_path(word), data: { turbo_frame: "modal" }
-      %th
-        = link_to edit_word_path(word) do
-          %i.fa-solid.fa-pen-to-square
-      %th
-        = button_to word_path(word), method: :delete do
-          %i.fa-solid.fa-delete-left
+%table.table.table-hover.table-striped
+  %tbody.table-secondary
+    - @words.each do |word|
+      %tr.position-relative
+        %th= link_to word.word, word_path(word), data: { turbo_frame: "modal" }
+        %th
+          = link_to edit_word_path(word) do
+            %i.fa-solid.fa-pen-to-square
+        %th
+          = button_to word_path(word), method: :delete do
+            %i.fa-solid.fa-delete-left
