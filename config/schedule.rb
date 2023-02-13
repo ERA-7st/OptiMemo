@@ -4,8 +4,8 @@ set :environment, :development
 
 set :output, "#{Rails.root}/log/cron.log"
 
-# every 1.day, at: '00:00 am' do
-every 1.minute do
+# every 1.minute do
+every 1.day, at: '00:00 am' do
   begin
     rake "days_left:update"
   rescue => e

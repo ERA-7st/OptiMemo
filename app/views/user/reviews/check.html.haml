@@ -1,7 +1,11 @@
-- if @word
-  %h2= "残り#{@words.count}件"
-  %p= @word.word
-  = render "user/reviews/word_content", display: @display, word: @word
-- else
-  %h2 終了
-  = link_to "TOPに戻る", user_home_top_path, data: { turbo: false }
+#check
+  - if @word
+    %p= "残り#{@words.count}件"
+    %p.word_word= @word.word
+    - @word.categories.each do | category |
+      .categories= category.name
+    %br
+    = render "user/reviews/word_content", display: @display, word: @word
+  - else
+    %h2 終了
+    = link_to "TOPに戻る", user_home_top_path, data: { turbo: false }
