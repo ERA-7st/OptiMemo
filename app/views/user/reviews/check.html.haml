@@ -1,7 +1,10 @@
 #check
   - if @word
-    %h2= "残り#{@words.count}件"
-    %p= @word.word
+    %p= "残り#{@words.count}件"
+    %p.word_word= @word.word
+    - @word.categories.each do | category |
+      .categories= category.name
+    %br
     = render "user/reviews/word_content", display: @display, word: @word
   - else
     %h2 終了

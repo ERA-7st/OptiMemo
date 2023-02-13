@@ -1,2 +1,6 @@
-%p= @word.word
-= render "user/each_reviews/word_content", display: @display, word: @word
+#check
+  %p.word_word= @word.word
+  - @word.categories.each do |category|
+    .categories= category.name
+  %br
+  = render "user/each_reviews/word_content", display: @display, word: @word
