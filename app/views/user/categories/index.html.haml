@@ -5,7 +5,10 @@
 = form_with model:@new_category do |f|
   = f.text_field :name
   = f.submit "追加"
-- @categories.each do |category|
-  = category.name
-  = button_to "削除", category_path(category), method: :delete
-  %br
+%br
+%table.table.table-hover.table-striped
+  %tbody.table-secondary
+    - @categories.each do |category|
+      %tr.position-relative
+      %th= "#{category.name}(#{category.words.count})"
+      %th= button_to "削除", category_path(category), method: :delete
